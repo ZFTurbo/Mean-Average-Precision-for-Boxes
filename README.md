@@ -38,6 +38,8 @@ mean_ap, average_precisions = mean_average_precision_for_boxes(ann, det)
 
 ## Input files format
 
+Boxes must be in normalized form e.g. coordinates must be on range: [0, 1]. To convert from pixel values you need to recalculate them as: `x_norm = x/width`, `y_norm = y/height`
+
 * Annotation CSV-file:
 
 ```csv
