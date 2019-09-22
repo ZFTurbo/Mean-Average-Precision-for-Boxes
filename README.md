@@ -4,6 +4,12 @@ Function to calculate mean average precision (mAP) for set of boxes. Useful for 
 
 python 3.*, numpy, pandas
 
+# Installation
+
+```
+pip install map-boxes
+```
+
 ## Usage example:
 
 You can provide paths to CSV-files:
