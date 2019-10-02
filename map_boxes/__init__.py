@@ -125,7 +125,6 @@ def mean_average_precision_for_boxes(ann, pred, iou_threshold=0.5, exclude_not_i
         if verbose:
             print('Number of files in detection after reduction: {}'.format(len(preds_unique)))
 
-    all_ids = list(preds['ImageID'].unique())
     unique_classes = valid['LabelName'].unique().astype(np.str)
     if verbose:
         print('Unique classes: {}'.format(len(unique_classes)))
@@ -148,10 +147,10 @@ def mean_average_precision_for_boxes(ann, pred, iou_threshold=0.5, exclude_not_i
         scores = []
         num_annotations = 0.0
 
-        for i in range(len(all_ids)):
+        for i in range(len(ann_unique)):
             detections = []
             annotations = []
-            id = all_ids[i]
+            id = ann_unique[i]
             if id in all_detections:
                 if label in all_detections[id]:
                     detections = all_detections[id][label]
