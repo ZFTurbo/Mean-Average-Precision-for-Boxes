@@ -219,7 +219,10 @@ def mean_average_precision_for_boxes(ann, pred, iou_threshold=0.5, exclude_not_i
         if num_annotations > 0:
             present_classes += 1
             precision += average_precision
-    mean_ap = precision / present_classes
+    if present_classes > 0:
+        mean_ap = precision / present_classes
+    else:
+        mean_ap = 0
     if verbose:
         print('mAP: {:.6f}'.format(mean_ap))
     return mean_ap, average_precisions
