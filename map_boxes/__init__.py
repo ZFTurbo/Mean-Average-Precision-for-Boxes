@@ -111,8 +111,8 @@ def mean_average_precision_for_boxes(ann, pred, iou_threshold=0.5, exclude_not_i
     else:
         preds = pd.DataFrame(pred, columns=['ImageID', 'LabelName', 'Conf', 'XMin', 'XMax', 'YMin', 'YMax'])
 
-    ann_unique = valid['ImageID'].unique()
-    preds_unique = preds['ImageID'].unique()
+    ann_unique = valid['ImageID'].unique().astype(np.str)
+    preds_unique = preds['ImageID'].unique().astype(np.str)
 
     if verbose:
         print('Number of files in annotations: {}'.format(len(ann_unique)))
