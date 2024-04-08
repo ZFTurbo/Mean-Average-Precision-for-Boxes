@@ -18,8 +18,8 @@ except:
 
 def get_real_annotations(table):
     res = dict()
-    ids = table['ImageID'].values.astype(np.str)
-    labels = table['LabelName'].values.astype(np.str)
+    ids = table['ImageID'].values.astype(str)
+    labels = table['LabelName'].values.astype(str)
     xmin = table['XMin'].values.astype(np.float32)
     xmax = table['XMax'].values.astype(np.float32)
     ymin = table['YMin'].values.astype(np.float32)
@@ -40,8 +40,8 @@ def get_real_annotations(table):
 
 def get_detections(table):
     res = dict()
-    ids = table['ImageID'].values.astype(np.str)
-    labels = table['LabelName'].values.astype(np.str)
+    ids = table['ImageID'].values.astype(str)
+    labels = table['LabelName'].values.astype(str)
     scores = table['Conf'].values.astype(np.float32)
     xmin = table['XMin'].values.astype(np.float32)
     xmax = table['XMax'].values.astype(np.float32)
@@ -111,8 +111,8 @@ def mean_average_precision_for_boxes(ann, pred, iou_threshold=0.5, exclude_not_i
     else:
         preds = pd.DataFrame(pred, columns=['ImageID', 'LabelName', 'Conf', 'XMin', 'XMax', 'YMin', 'YMax'])
 
-    ann_unique = valid['ImageID'].unique().astype(np.str)
-    preds_unique = preds['ImageID'].unique().astype(np.str)
+    ann_unique = valid['ImageID'].unique().astype(str)
+    preds_unique = preds['ImageID'].unique().astype(str)
 
     if verbose:
         print('Number of files in annotations: {}'.format(len(ann_unique)))
@@ -125,7 +125,7 @@ def mean_average_precision_for_boxes(ann, pred, iou_threshold=0.5, exclude_not_i
         if verbose:
             print('Number of files in detection after reduction: {}'.format(len(preds_unique)))
 
-    unique_classes = valid['LabelName'].unique().astype(np.str)
+    unique_classes = valid['LabelName'].unique().astype(str)
     if verbose:
         print('Unique classes: {}'.format(len(unique_classes)))
 
